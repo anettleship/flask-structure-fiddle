@@ -29,18 +29,17 @@ generic
 static
     static files live here
 tests
-    - functional_tests
-        test_* files containing functional tests for individual routes implemented using pytest live here
-    - unit_tests
-        test_* files containing unit tests for individual functions live here  
+    test_functional_* files containing functional tests for individual routes implemented using pytest live here
+    test_unit_* files containing unit tests for individual functions live here  
 app.py
     calls application launch and registers blueprints, imported from supporting files
-app_factory.py
-    contains application factory functions that are called by tests and app.py to instantiate flask applications
-config.py
-    contains classes for different configuration options to allow for production launch and testing instances
-models.py
-    contains schemas for database
+app
+    app_factory.py
+        contains application factory functions that are called by tests and app.py to instantiate flask applications
+    config.py
+        contains classes for different configuration options to allow for production launch and testing instances
+    models.py
+        contains schemas for database
 
 
 Structure of a single blueprint: (following https://realpython.com/flask-blueprint/)

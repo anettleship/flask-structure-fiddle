@@ -1,8 +1,17 @@
 from flask import Blueprint
+import os
+
 
 initial_blueprint = Blueprint("initial_blueprint", __name__)
 
 @initial_blueprint.route("/")
 def index():
 
-    return "Blueprint functioning!"
+    secret_key = os.getenv("SECRET_KEY")
+
+    if secret_key != None:
+        if len(secret_key) > 0:
+            return "Application passed basic healthcheck"
+
+    raise EnvironmentError("Valid Secret Key not set!")
+    

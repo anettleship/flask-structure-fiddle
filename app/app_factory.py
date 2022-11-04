@@ -1,6 +1,8 @@
 from flask import Flask
 from generic.initial_blueprint import initial_blueprint
 
+import sys
+
 
 
 
@@ -24,5 +26,7 @@ def register_blueprints(app):
     """
 
     app.register_blueprint(initial_blueprint)
+
+    print(sys.path)
 
     return app

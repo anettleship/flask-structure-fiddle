@@ -26,6 +26,8 @@ class testing(config):
     """
     
     def __init__(self):
+        # initialise base class to inherit properties
+        super().__init__()
         self.FLASK_ENV = 'testing'
         self.TESTING = True 
 
@@ -36,6 +38,8 @@ class development(config):
     """
 
     def __init__(self):
+        # initialise base class to inherit properties
+        super().__init__()
         self.DEBUG = True
 
 class production(config):
@@ -44,6 +48,8 @@ class production(config):
     """
 
     def __init__(self):
+        # initialise base class to inherit properties
+        super().__init__()
         self.FLASK_ENV = 'production'
 
 
