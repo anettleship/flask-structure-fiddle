@@ -4,8 +4,6 @@ from generic.initial_blueprint import initial_blueprint
 import sys
 
 
-
-
 def create_app(config_class):
     """
     Application Factory function to instantiate an application from a given config class defined below.

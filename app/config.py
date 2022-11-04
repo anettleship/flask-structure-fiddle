@@ -2,7 +2,6 @@ import os
 from flask import Flask
 
 
-
 class config:
 
     """
@@ -13,23 +12,24 @@ class config:
         self.exists = True
 
         # Default settings
-        self.FLASK_ENV = 'development'
+        self.FLASK_ENV = "development"
         self.DEBUG = False
         self.TESTING = False
 
         # Do not set a default secret key, we want application launch to fail by default if none set as part of application health checks
-        self.SECRET_KEY = os.getenv('SECRET_KEY') 
+        self.SECRET_KEY = os.getenv("SECRET_KEY")
+
 
 class testing(config):
     """
     Config for instantiating an app within software tests.
     """
-    
+
     def __init__(self):
         # initialise base class to inherit properties
         super().__init__()
-        self.FLASK_ENV = 'testing'
-        self.TESTING = True 
+        self.FLASK_ENV = "testing"
+        self.TESTING = True
         self.SECRET_KEY = "testing secret key only lets not put this in production"
 
 
@@ -43,16 +43,13 @@ class development(config):
         super().__init__()
         self.DEBUG = True
 
+
 class production(config):
     """
-    Config for production 
+    Config for production
     """
 
     def __init__(self):
         # initialise base class to inherit properties
         super().__init__()
-        self.FLASK_ENV = 'production'
-
-
-
-
+        self.FLASK_ENV = "production"
