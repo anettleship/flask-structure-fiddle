@@ -12,5 +12,5 @@ def test_generic_response():
 
     # Create a test client using the Flask application configured for testing
     with app.test_client() as test_client:
-        response = test_client.get("/")
+        response = test_client.get("/healthcheck/")
         assert response.status_code == 200
