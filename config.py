@@ -2,17 +2,6 @@ import os
 from flask import Flask
 
 
-def create_app(config_class):
-    """
-    Application Factory function to instantiate an application from a given config class defined below.
-    """
-
-    app = Flask(__name__)
-
-    # do more things here
-
-    return app
-
 
 class config:
 

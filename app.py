@@ -1,7 +1,8 @@
 from flask import Flask
-from generic.initial_blueprint import initial_blueprint
+from app_factory import create_app
+import config
 
-app = Flask(__name__)
-app.register_blueprint(initial_blueprint)
+
+app = create_app(config.development)
 
 app.run()
