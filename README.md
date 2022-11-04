@@ -1,4 +1,12 @@
 # flask-structure-fiddle
+
+How to launch:
+
+SECRET_KEY must be set as an environment variable before launch.
+
+    set SECRET_KEY=keepmysecretkeysecretplease
+
+
 A proof of concept Flask app to play with Flask features such as Blueprints and Database models and revise Flask application layout following an externally prescribed structure.
 
 I started off working from this article and adopted the structure proposed here:
