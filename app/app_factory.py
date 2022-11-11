@@ -1,14 +1,15 @@
 from flask import Flask
-from api.api import api_blueprint
-from generic.initial_blueprint import initial_blueprint
 from flask_sqlalchemy import SQLAlchemy
-
-import sys
 
 # Instantiate sqlalchemy db model here so we can import it into models.py
 db = SQLAlchemy()
 
+from api.api import api_blueprint
+from generic.initial_blueprint import initial_blueprint
+
 # import models after instantiating db, so we can import the db object and make subclasses from it in models.py
+# this needs to be done ahead of the db.create_all() call, or SQLalchemy will not know about our models.
+# In this case our blueprints already call upon some classes from Models, we do not wish to rely on these blueprints to do this.
 import app.models
 
 def create_app(config_class):
@@ -46,8 +47,7 @@ def init_database(app):
     """
     Function to initialise database as specified by settings config applied to app.
     """
-    # db is instantiated at the top of this module
-
+    # db object has already been instantiated at the top of this file ahead of importing models and blueprints
     # SQL Database config has already been set by config object passed to create_app
 
     db.init_app(app)

@@ -1,4 +1,3 @@
-import pytest
 from app.models import User
 from tests.conftest import new_user
 

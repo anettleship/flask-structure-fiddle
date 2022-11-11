@@ -1,5 +1,4 @@
-from flask import Blueprint, current_app
-import os
+from flask import Blueprint
 from app.app_factory import db
 from app.models import User
 
