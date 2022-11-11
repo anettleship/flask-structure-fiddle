@@ -4,6 +4,11 @@ from flask_sqlalchemy import SQLAlchemy
 
 import sys
 
+# Instantiate sqlalchemy db model here so we can import it into models.py
+db = SQLAlchemy()
+
+# import models after instantiating db, so we can import the db object and make subclasses from it in models.py
+import app.models
 
 def create_app(config_class):
     """
@@ -16,7 +21,9 @@ def create_app(config_class):
 
     register_blueprints(app)
 
-    db = init_database(app)
+    # if models are imported within our blueprints, we can only instantiate our db after importing blueprints
+    # broadly, we must make sure we have imported models before this point, so that db.create_all() is aware of our models.
+    init_database(app)
 
     # Where and how noow do we declare our Models classes as a subclass of db.Model?
 
@@ -37,11 +44,12 @@ def init_database(app):
     """
     Function to initialise database as specified by settings config applied to app.
     """
-
-    db = SQLAlchemy()
+    # db is instantiated at the top of this module
 
     # SQL Database config has already been set by config object passed to create_app
 
-    db.init_app(app)    
+    db.init_app(app)
+    with app.app_context():
+        db.create_all()
 
     return db
