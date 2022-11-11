@@ -20,7 +20,8 @@ https://testdriven.io/blog/flask-pytest/
 I followed this article to guide how to implement my config as a class in config.py, and to guide how to implement an application factory pattern for testing:
 https://towardsdatascience.com/how-to-set-up-a-production-grade-flask-application-using-application-factory-pattern-and-celery-90281349fb7a
 
-
+This article was useful to determine how to instantiate the SQLalchemy DB as part of the application factory:
+https://stackoverflow.com/questions/54487519/how-to-get-flask-sqlalchemy-to-work-with-the-application-factory-pattern
 
 Project File Structure:
 
