@@ -1,4 +1,5 @@
 from flask import Flask
+from api.api import api_blueprint
 from generic.initial_blueprint import initial_blueprint
 from flask_sqlalchemy import SQLAlchemy
 
@@ -36,6 +37,7 @@ def register_blueprints(app):
     """
 
     app.register_blueprint(initial_blueprint, url_prefix="/healthcheck")
+    app.register_blueprint(api_blueprint)
 
     return app
 

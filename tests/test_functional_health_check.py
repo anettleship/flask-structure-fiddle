@@ -2,6 +2,7 @@ import app.config as config
 from app.app_factory import create_app
 from app.app_factory import db
 from app.models import User
+from tests.conftest import new_user
 
 def test_generic_response():
     """
@@ -16,7 +17,7 @@ def test_generic_response():
         response = test_client.get("/healthcheck/")
         assert response.status_code == 200
 
-def test_user_database():
+def test_user_database(new_user):
     """
     GIVEN a Flask application configured for testing and a blank database
     WHEN we add a single user to the database
@@ -25,19 +26,12 @@ def test_user_database():
 
     app = create_app(config.testing())
 
-    user = User(
-        id = 1,
-        username = "Flask",
-        email = "my@email.com",
-    )
-
-    db.session.add(user)
+    db.session.add(new_user)
     db.session.commit()
-
-
 
     # Create a test client using the Flask application configured for testing
     with app.test_client() as test_client:
-        response = test_client.get("/healthcheck/")
+        response = test_client.get("/user_list/")
         assert response.status_code == 200
+        assert response != None
 
