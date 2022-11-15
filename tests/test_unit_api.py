@@ -12,3 +12,6 @@ def test_new_user(test_user):
     assert user.email == 'emailuser@email.com'
     assert user.username == 'FlaskIsAwesome'
     assert user.id == 1
+
+
+# Todo, test support functions in api

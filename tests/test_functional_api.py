@@ -31,8 +31,8 @@ def test_users_single(test_user):
 def test_users_multiple(test_user, test_user1, test_user2):
     """
     GIVEN a Flask application configured for testing and a blank database
-    WHEN we add a single user to the database
-    THEN check that user is the only item returned by the /users route in the api module
+    WHEN we add a three users to the database
+    THEN check that those three users are returned by the /users route in the api module
     """
 
     app = create_app(config.testing())
@@ -52,5 +52,7 @@ def test_users_multiple(test_user, test_user1, test_user2):
             assert ast.literal_eval(response.text)[2] == 'FlaskIsAwesome2'
             assert len(ast.literal_eval(response.text)) == 3
 
+
+# Todo, test other routes in api.
 
 
