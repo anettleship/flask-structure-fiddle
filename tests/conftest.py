@@ -25,6 +25,20 @@ def test_user2():
     return user
 
 
+
+@pytest.fixture(scope='function')
+def add_db_user(test_user):
+
+    app = create_app(config.testing())
+
+    with app.app_context():
+        db.session.add(test_user)
+        db.session.commit()
+
+        yield app, db
+
+
+
 @pytest.fixture(scope='function')
 def add_db_users(test_user, test_user1, test_user2):
 
@@ -36,5 +50,5 @@ def add_db_users(test_user, test_user1, test_user2):
         db.session.add(test_user2)
         db.session.commit()
 
-        yield app
+        yield app, db
 

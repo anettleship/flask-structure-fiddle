@@ -1,5 +1,5 @@
 from app.models import User
-from tests.conftest import test_user 
+from api.api import get_next_id, add_user
 
 
 def test_new_user(test_user):
@@ -14,5 +14,23 @@ def test_new_user(test_user):
     assert user.id == 1
 
 
-def test_get_next_id():
-    assert True == True
+def test_get_next_id_empty(add_db_empty):
+
+    app, db = add_db_empty
+    next_id = get_next_id(db, User)
+    assert next_id == 1
+
+
+def test_get_next_id_single(add_db_user):
+
+    app, db = add_db_user
+    next_id = get_next_id(db, User)
+    assert next_id == 1
+
+
+def test_get_next_id_multiple(add_db_users):
+
+    app, db = add_db_users
+    next_id = get_next_id(db, User)
+    assert next_id == 3
+
