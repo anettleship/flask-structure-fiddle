@@ -39,8 +39,28 @@ def test_add_user_empty():
 
     assert True == True
 
-def test_read_table(add_db_empty, test_uer):
+
+def test_read_table_empty(add_db_empty):
 
     app, db = add_db_empty
-    user_data = read_table(db, test_user, )
+    user_data = read_table(db, User, User.id)
+
+    assert len(user_data) == 0
+
+
+def test_read_table_single(add_db_user):
+
+    app, db = add_db_user
+    user_data = read_table(db, User, User.id)
+
+    assert len(user_data) == 1
+
+
+def test_read_table_multiple(add_db_users):
+
+    app, db = add_db_users
+    user_data = read_table(db, User, User.id)
+
+    assert len(user_data) == 3
+
 
