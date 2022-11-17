@@ -1,5 +1,5 @@
 from app.models import User
-from api.api import get_next_id, add_user, read_table, write_table
+from api.api import get_next_id, add_user, read_table_full, write_table
 
 
 def test_new_user(test_user):
@@ -40,26 +40,29 @@ def test_add_user_empty():
     assert True == True
 
 
-def test_read_table_empty(add_db_empty):
+# Todo build out above test and test other functions in api
+
+
+def test_read_table_full_empty(add_db_empty):
 
     app, db = add_db_empty
-    user_data = read_table(db, User, User.id)
+    user_data = read_table_full(db, User, User.id)
 
     assert len(user_data) == 0
 
 
-def test_read_table_single(add_db_user):
+def test_read_table_full_single(add_db_user):
 
     app, db = add_db_user
-    user_data = read_table(db, User, User.id)
+    user_data = read_table_full(db, User, User.id)
 
     assert len(user_data) == 1
 
 
-def test_read_table_multiple(add_db_users):
+def test_read_table_full_multiple(add_db_users):
 
     app, db = add_db_users
-    user_data = read_table(db, User, User.id)
+    user_data = read_table_full(db, User, User.id)
 
     assert len(user_data) == 3
 

@@ -13,7 +13,7 @@ def index():
 
 @api_blueprint.route("/users")
 def user_list():
-    users = db.session.execute(db.select(User).order_by(User.username)).all()
+    users = read_table_full(db, User, User.username) 
     return str([data.User.username for data in users])
 
 
@@ -43,9 +43,11 @@ def get_next_id(db, modelclass):
     else:
         return 0
 
-def read_table(db, data, sort = None):
+def read_table_full(db, model, sort):
 
-    pass
+    data = db.session.execute(db.select(model).order_by(sort)).all()
+        
+    return data 
 
 def write_table(db, data):
 
