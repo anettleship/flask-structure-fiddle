@@ -1,5 +1,5 @@
 from app.models import User
-from api.api import get_next_id, add_user
+from api.api import get_next_id, add_user, read_table, write_table
 
 
 def test_new_user(test_user):
@@ -33,4 +33,14 @@ def test_get_next_id_multiple(add_db_users):
     app, db = add_db_users
     next_id = get_next_id(db, User)
     assert next_id == 3
+
+
+def test_add_user_empty():
+
+    assert True == True
+
+def test_read_table(add_db_empty, test_uer):
+
+    app, db = add_db_empty
+    user_data = read_table(db, test_user, )
 

@@ -43,6 +43,9 @@ def get_next_id(db, modelclass):
     else:
         return 0
 
+def read_table(db, data, sort = None):
+
+    pass
 
 def write_table(db, data):
 
