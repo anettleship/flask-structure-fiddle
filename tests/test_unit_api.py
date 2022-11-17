@@ -18,7 +18,7 @@ def test_get_next_id_empty(add_db_empty):
 
     app, db = add_db_empty
     next_id = get_next_id(db, User)
-    assert next_id == 1
+    assert next_id == 0
 
 
 def test_get_next_id_single(add_db_user):

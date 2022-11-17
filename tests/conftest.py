@@ -25,6 +25,15 @@ def test_user2():
     return user
 
 
+@pytest.fixture(scope='function')
+def add_db_empty():
+
+    app = create_app(config.testing())
+
+    with app.app_context():
+       
+        yield app, db
+
 
 @pytest.fixture(scope='function')
 def add_db_user(test_user):
