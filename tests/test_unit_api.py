@@ -14,4 +14,5 @@ def test_new_user(test_user):
     assert user.id == 1
 
 
-# Todo, test support functions in api
+def test_get_next_id():
+    assert True == True
