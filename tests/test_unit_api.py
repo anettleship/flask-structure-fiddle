@@ -41,6 +41,7 @@ def test_add_user_empty():
 
 
 # Todo build out above test and test other functions in api
+# Next module, write tests first, write code later
 
 
 def test_read_table_full_empty(add_db_empty):
