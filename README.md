@@ -23,7 +23,7 @@ https://towardsdatascience.com/how-to-set-up-a-production-grade-flask-applicatio
 This article was useful to determine how to instantiate the SQLalchemy DB as part of the application factory:
 https://stackoverflow.com/questions/54487519/how-to-get-flask-sqlalchemy-to-work-with-the-application-factory-pattern
 
-Project File Structure:
+Project File Structure (github doesn't like my linebreaks, so open the plain file to read this):
 
 api
     blueprint for apis for programmatic access live here
