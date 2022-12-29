@@ -19,6 +19,9 @@ class config:
         # Do not set a default secret key, we want application launch to fail by default if none set as part of application health checks
         self.SECRET_KEY = os.getenv("SECRET_KEY")
 
+        if self.SECRET_KEY == None:
+            print("No secret key set, app will quit.")
+
         # Default to an in memory database
         self.SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
 
