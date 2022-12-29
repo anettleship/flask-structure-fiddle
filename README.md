@@ -2,11 +2,9 @@
 
 How to launch:
 
-SECRET_KEY must be set as an environment variable before launch.
+SECRET_KEY must be set as an environment variable before launch, or run in vscode using temporary secret key specified in launch.json.
 
     set SECRET_KEY=keepmysecretkeysecretplease
-
-Note, Vscode is being awkward with our use of an application factory in app.py, so to debug we must run the app.py file explicitly (debug while the file is selected). I've not been able to configure a flask specific launch.json that finds the flask app correctly so far. You will know you've gone wrong when you see import errors because you ran the wrong file.
 
 
 A proof of concept Flask app to play with Flask features such as Blueprints and Database models and revise Flask application layout following an externally prescribed structure.
